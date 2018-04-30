@@ -7,10 +7,9 @@ public class GameManager : MonoBehaviour {
 
     public int currentGold;
     public Text goldText;
-    public Text goldRequiredText;
 	// Use this for initialization
 	void Start () {
-        goldRequiredText.enabled = false;
+		
 	}
 	
 	// Update is called once per frame
