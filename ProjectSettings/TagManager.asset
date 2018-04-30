@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Terrain
   - gui.HP
+  - Skeleton
   layers:
   - Default
   - TransparentFX
