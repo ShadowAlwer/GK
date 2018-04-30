@@ -28,13 +28,16 @@ public class Player_weapons : MonoBehaviour {
 				hideWeapon();
 			}
         }
+		Debug.Log(Input.GetAxis ("Fire1"));
+		if (Input.GetAxis ("Fire1")>0.1)
+        {
+			if (anim.GetCurrentAnimatorStateInfo (0).IsTag ("idleWeap")||anim.GetCurrentAnimatorStateInfo (0).IsTag ("walkingWeap"))
+            anim.SetBool ("attackingWeapon",true);
+        }
+		
 	}
 	public void displayWeapon() {
 		
-		/*for (int i = 0; i < weapons.Length; i++) {
-			if(weapons [i] != null)
-				weapons [i].SetActive (i == currentWeapon);
-		}*/
 		if (weapons[currentWeapon]!=null)
 			weapons[currentWeapon].SetActive(true);
 		currentWeapon++;

@@ -9,6 +9,9 @@ public class AnimationHelper : EditorWindow
 	 public AnimationClip walkAnim; 
 	 public AnimationClip runAnim; 
 	 public AnimationClip jumpInRunAnim; 
+	 public AnimationClip jumpStaticAnim; 
+
+	 public AnimationClip attackSwordAnim;
 	 public AnimationClip equipWeapAnim; 
 	 public AnimationClip idleWeapAnim; 
 	 public AnimationClip hideWeapAnim; 
@@ -18,7 +21,7 @@ public class AnimationHelper : EditorWindow
 	 public AnimationClip walkRightWeapAnim; 
 	 public AnimationClip walkLeftWeapAnim; 
 
-	  public AnimationClip inAirAnim;
+	 public AnimationClip inAirAnim;
 
 	 [MenuItem ("Window/Animator Helper")] 
 	 static void OpenWindow () 
@@ -32,6 +35,9 @@ public class AnimationHelper : EditorWindow
 		walkAnim = EditorGUILayout.ObjectField("Walk", walkAnim, typeof(AnimationClip), false) as AnimationClip; 
 		runAnim = EditorGUILayout.ObjectField("Run", runAnim, typeof(AnimationClip), false) as AnimationClip; 
 		jumpInRunAnim = EditorGUILayout.ObjectField("Jump In Run", jumpInRunAnim, typeof(AnimationClip), false) as AnimationClip; 
+		jumpStaticAnim = EditorGUILayout.ObjectField("jump Static Anim", jumpStaticAnim, typeof(AnimationClip), false) as AnimationClip; 
+		
+		attackSwordAnim = EditorGUILayout.ObjectField("attack Sword", attackSwordAnim, typeof(AnimationClip), false) as AnimationClip; 
 		equipWeapAnim = EditorGUILayout.ObjectField("Equip weapon", equipWeapAnim, typeof(AnimationClip), false) as AnimationClip; 
 		idleWeapAnim = EditorGUILayout.ObjectField("idle weapon", idleWeapAnim, typeof(AnimationClip), false) as AnimationClip; 
 		hideWeapAnim = EditorGUILayout.ObjectField("Hide weapon", hideWeapAnim, typeof(AnimationClip), false) as AnimationClip; 
@@ -64,6 +70,9 @@ public class AnimationHelper : EditorWindow
 		controller.AddParameter("endEquipingWeapon", AnimatorControllerParameterType.Bool);
 		controller.AddParameter("hidingWeapon", AnimatorControllerParameterType.Bool);
 		controller.AddParameter("endHidingWeapon", AnimatorControllerParameterType.Bool);
+		
+		controller.AddParameter("attackingWeapon", AnimatorControllerParameterType.Bool);
+		controller.AddParameter("endAttackingWeapon", AnimatorControllerParameterType.Bool);
 		controller.AddParameter("x", AnimatorControllerParameterType.Float);
 		controller.AddParameter("y", AnimatorControllerParameterType.Float);
 		controller.AddParameter("inTheMiddleOfJumping", AnimatorControllerParameterType.Bool);
@@ -77,18 +86,25 @@ public class AnimationHelper : EditorWindow
 		AnimatorState jumpInRunState = controller.layers[0].stateMachine.AddState("Jump In Run");
 		jumpInRunState.motion = jumpInRunAnim; 
 		jumpInRunState.tag="jumpTag";
+		AnimatorState jumpStaticState = controller.layers[0].stateMachine.AddState("jump Static Anim");
+		jumpStaticState.motion = jumpStaticAnim; 
+		jumpStaticState.tag="jumpStaticTag";
 
+		AnimatorState attackSwordState = controller.layers[0].stateMachine.AddState("Attack Sword");
+		attackSwordState.motion = attackSwordAnim; 
+		attackSwordState.speed=1.5f;
 		AnimatorState idleWeapState = controller.layers[0].stateMachine.AddState("Idle Weapon");
 		idleWeapState.motion = idleWeapAnim; 
 		idleWeapState.tag="idleWeap";
 		AnimatorState equipWeapState = controller.layers[0].stateMachine.AddState("Equiping Weapon");
 		equipWeapState.motion = equipWeapAnim; 
+		equipWeapState.speed=1.5f;
 		AnimatorState hideWeapState = controller.layers[0].stateMachine.AddState("Hiding Weapon");
 		hideWeapState.motion = hideWeapAnim; 
+		hideWeapState.speed=1.5f;
 
 		AnimatorState inAirState = controller.layers[0].stateMachine.AddState("in Air");
 		inAirState.motion = inAirAnim; 
-
 
 		//Blend tree creation WALK-RUN
 		BlendTree blendTree; 
@@ -99,8 +115,6 @@ public class AnimationHelper : EditorWindow
 		blendTree.blendParameter = "movement"; 
 		blendTree.AddChild(walkAnim);
 		blendTree.AddChild(runAnim); 
-
-		
 
 		//Transitions
 		//Transition idleState-moveState-idleState
@@ -116,6 +130,12 @@ public class AnimationHelper : EditorWindow
 		LeaveMove.AddCondition(AnimatorConditionMode.If,1,"jumping"); 
 		leaveJump.AddCondition(AnimatorConditionMode.If,1,"endjumping"); 
 
+		//Transitions
+		//Transition idleState-jumpStaticState-idleState
+		AnimatorStateTransition LeaveIdleToJump = idleState.AddTransition(jumpStaticState); 
+		AnimatorStateTransition leaveJumptoIdle = jumpStaticState.AddTransition(idleState); 
+		LeaveIdleToJump.AddCondition(AnimatorConditionMode.If,1,"jumping"); 
+		leaveJumptoIdle.AddCondition(AnimatorConditionMode.If,1,"endjumping"); 
 
 		//Transitions
 		//Transition idleState-equipWeapState-idleWeapState
@@ -165,10 +185,21 @@ public class AnimationHelper : EditorWindow
 		LeaveIdleState.AddCondition(AnimatorConditionMode.If,1,"inAir"); 
 		leaveInAirState2.AddCondition(AnimatorConditionMode.IfNot,1,"inAir"); 
 
+		//Transitions
+		//Transition moveWeaponState-attackSwordState-moveWeaponState
+		AnimatorStateTransition LeaveMoveWeaponState = moveWeaponState.AddTransition(attackSwordState); 
+		AnimatorStateTransition leaveAttackSwordState = attackSwordState.AddTransition(moveWeaponState); 
+		LeaveMoveWeaponState.AddCondition(AnimatorConditionMode.If,1,"attackingWeapon"); 
+		leaveAttackSwordState.AddCondition(AnimatorConditionMode.If,1,"endAttackingWeapon"); 
+
+		//Transitions
+		//Transition idleWeapState-attackSwordState-idleWeapState
+		AnimatorStateTransition LeaveIdleWeapState2 = idleWeapState.AddTransition(attackSwordState); 
+		AnimatorStateTransition leaveAttackSwordState2 = attackSwordState.AddTransition(idleWeapState); 
+		LeaveIdleWeapState2.AddCondition(AnimatorConditionMode.If,1,"attackingWeapon"); 
+		leaveAttackSwordState2.AddCondition(AnimatorConditionMode.If,1,"endAttackingWeapon"); 
+
 		target.GetComponent<Animator>().runtimeAnimatorController = controller;
-
-
-
 
 	}
 } 
