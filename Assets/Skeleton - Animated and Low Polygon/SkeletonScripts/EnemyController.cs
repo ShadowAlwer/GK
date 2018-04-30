@@ -12,62 +12,104 @@ public class EnemyController : MonoBehaviour
     public float distance;
     public bool shouldMove;
     public bool shouldFight;
+    public bool isMage;
+    public float spellCastRate;
+    public float spellCastDuration;
+    float nextSpellCast;
+    float nextMove;
+    public float attackingDistance;
 
-    Transform target;   // Reference to the player
+    public Transform target;   // Reference to the player
     NavMeshAgent agent; // Reference to the NavMeshAgent
     Animator animator;   
     public Vector2 velocity;
+    public GameObject fireball;
+    public Transform spellPoint;
     
 
     // Use this for initialization
     void Start()
     {
+       
+        nextSpellCast = 0;
         shouldFight = false;
-        shouldMove = false;
+        shouldMove = false;       
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        if(!isMage)
+        attackingDistance = agent.stoppingDistance;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        //target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        float time = Time.time;
         // Distance to the target
         distance = Vector3.Distance(target.position, transform.position);
 
         // If inside the lookRadius
-        if (distance <= lookRadius)
+        if (distance <= lookRadius && nextMove <= time)
         {
-            // Move towards the target
-            agent.SetDestination(target.position);          
-            velocity.y = 0.9f;  
-            shouldMove = true; //velocity.magnitude > 0.5f && agent.remainingDistance > agent.radius;
-            shouldFight = false;
-            // Update animation parameters
-
-            // If within attacking distance
-            if (distance <= agent.stoppingDistance)
+            if (isMage && nextSpellCast <= time)
             {
-                shouldFight = true;
-                shouldMove = false;
-                FaceTarget();   // Make sure to face towards the target
+                              
+                    if(agent.hasPath)
+                       agent.Stop();
+
+                    FaceTarget();
+                    shouldFight = true;
+                    shouldMove = false;
+                    animator.SetBool("magic", true);
+                    animator.SetBool("move", shouldMove);
+                    animator.SetBool("fight", shouldFight);
+                    animator.SetFloat("vx", velocity.x);
+                    animator.SetFloat("vy", velocity.y);
+                    nextSpellCast = time + spellCastRate;
+                    nextMove = time + spellCastDuration;
+                    
+                    GameObject spell=Instantiate(fireball);
+                    spell.GetComponent<Transform>().position = spellPoint.transform.position;
+                    Vector3 direction = (target.position - spellPoint.transform.position).normalized;                                       
+                    spell.GetComponent<Transform>().rotation = spellPoint.transform.rotation;
+                    spell.GetComponent<Transform>().Rotate(0,-90,0);
+
             }
-            // Update animation parameters
-            animator.SetBool("move", shouldMove);
-            animator.SetBool("fight", shouldFight);
-            animator.SetFloat("vx", velocity.x);
-            animator.SetFloat("vy", velocity.y);
+            else
+            {
+                if (agent.isStopped)
+                    agent.Resume();
+                // Move towards the target
+                agent.SetDestination(target.position);
+                velocity.y = 0.9f;
+                shouldMove = true;
+                shouldFight = false;
+                // Update animation parameters
+
+                // If within attacking distance
+                if (distance <= agent.stoppingDistance)
+                {
+                    if(distance<attackingDistance)
+                    shouldFight = true;
+                    shouldMove = false;
+                    FaceTarget();   // Make sure to face towards the target
+                }
+                // Update animation parameters
+                animator.SetBool("move", shouldMove);
+                animator.SetBool("fight", shouldFight);
+                animator.SetFloat("vx", velocity.x);
+                animator.SetFloat("vy", velocity.y);
+                animator.SetBool("magic", false);
 
 
-        }
-        if(distance>lookRadius && shouldMove==true)
-        {
-            if (agent.hasPath)
-                agent.ResetPath();
-            shouldMove = false;
-            animator.SetBool("move", shouldMove);
+            }
+            if (distance > lookRadius && shouldMove == true)
+            {
+                if (agent.hasPath)
+                    agent.ResetPath();
+                shouldMove = false;
+                animator.SetBool("move", shouldMove);
+            }
         }
     }
 
