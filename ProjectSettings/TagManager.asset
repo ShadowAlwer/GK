@@ -7,6 +7,10 @@ TagManager:
   - Terrain
   - gui.HP
   - Skeleton
+  - GameManager
+  - inventory
+  - WeaponEnd
+  - Items
   layers:
   - Default
   - TransparentFX
