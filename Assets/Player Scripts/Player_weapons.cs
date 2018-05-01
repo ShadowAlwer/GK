@@ -81,5 +81,12 @@ public class Player_weapons : MonoBehaviour {
 			currentWeaponGameObject.SetActive(false);
 		Debug.Log("Damage");
 		Debug.Log("Damage"+weapon.damage);
+
+        currentWeaponGameObject.GetComponent<PlayerWeaponController>().damage = weapon.damage;
+
 	}
+
+    
+
+
 }
