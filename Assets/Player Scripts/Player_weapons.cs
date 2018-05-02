@@ -10,6 +10,16 @@ public class Player_weapons : MonoBehaviour {
 	int currentWeapon=0;
 	bool equiped;
 	GameObject currentWeaponGameObject;
+	string nameOfCurrentWeapon;
+
+	public GameObject getCurrentWeaponGameObject()
+	{
+		return currentWeaponGameObject;
+	}
+	public string getCurrentWeaponName()
+	{
+		return nameOfCurrentWeapon;
+	}
 	void Start () {
 		 anim = GetComponent <Animator> ();
 		 currentWeaponGameObject=weapons[0];
@@ -61,6 +71,7 @@ public class Player_weapons : MonoBehaviour {
 
 	public void setNewWeapon(Weapon weapon)
 	{
+		nameOfCurrentWeapon=weapon.name;
 		Debug.Log("Probuje stworzyc item");
 		GameObject WeaponEnd=GameObject.FindGameObjectWithTag("WeaponEnd");
 		var weaponResource=Resources.Load(weapon.modelPath);
@@ -75,14 +86,16 @@ public class Player_weapons : MonoBehaviour {
 		weaponGameObject.transform.localEulerAngles=weapon.rotation;
 		GameObject.Destroy(currentWeaponGameObject);
 		currentWeaponGameObject=weaponGameObject;
+		
+		
+        currentWeaponGameObject.GetComponent<PlayerWeaponController>().damage = weapon.damage;
 		if (equiped==true)
 			currentWeaponGameObject.SetActive(true);
 		else
 			currentWeaponGameObject.SetActive(false);
-		Debug.Log("Damage");
-		Debug.Log("Damage"+weapon.damage);
 
-        currentWeaponGameObject.GetComponent<PlayerWeaponController>().damage = weapon.damage;
+		//Debug.Log("Damage");
+		//Debug.Log("Damage"+weapon.damage);
 
 	}
 

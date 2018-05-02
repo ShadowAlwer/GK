@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+ [System.Serializable] 
 [RequireComponent(typeof(Collider))]
 public class ItemInfo : MonoBehaviour {
     public enum ItemType {weapon, armor ,potion,other};
@@ -9,6 +9,7 @@ public class ItemInfo : MonoBehaviour {
     public Item item;
     private PlayerInventory playerInventory;
 
+    
     public Vector3 position;
     public Vector3 rotation;
 

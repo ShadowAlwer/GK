@@ -20,17 +20,17 @@ public class ItemFrame : MonoBehaviour {
 	{
         if (item is Weapon)
         {
-           
+                
             Player_weapons playerWeapons = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_weapons>();
             playerWeapons.setNewWeapon((Weapon) item);
             disableFrame();
             changeColor(Color.cyan);
             
+            
         }
 	}
     public void changeColor(Color color)
 	{
-
 
 		color.a=1;
 		Image frameImage=gameObject.GetComponent<Image>();

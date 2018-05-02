@@ -43,7 +43,7 @@ public class InventoryMenu : MonoBehaviour {
         rectSize = 0;
         //  disableIcons();
         //activeIcons(1);
-        // listItemFrame.Clear();
+         listItemFrame.Clear();
         //for (int i = 0; i < playerInventory.inventory.Count; ++i)
         //{
 
@@ -63,7 +63,8 @@ public class InventoryMenu : MonoBehaviour {
         itemFrame.SetActive(false);
      //   rect_trans.sizeDelta = new Vector2(0, (item_frame_rt.rect.height + 1.5f) * rectSize);
      //   rect_trans.anchoredPosition += new Vector2(0, -(item_frame_rt.rect.height + 1.5f) * rectSize / 2);
-    
+        highlightCurrentWeapon();
+        
     }
 
     void drawItem(Item it)
@@ -80,11 +81,11 @@ public class InventoryMenu : MonoBehaviour {
         //Debug.Log(playerInventory.inventory[i].value);
         tmpIF.name = it.name;
         tmpIF.value = it.value;
-        //tmpIF.item = it;
+        tmpIF.item = it;
         tmpIF.setValues();
         //tmp.SetActive(true);
         //gameObject.SetActive(true);
-        //listItemFrame.Add(tmpIF);
+        listItemFrame.Add(tmpIF);
         //Debug.Log("updateuje menu");
         rectSize++;
     }
@@ -122,5 +123,18 @@ public class InventoryMenu : MonoBehaviour {
         updateInventory();
 
     }
+    public void highlightCurrentWeapon()
+	{
+        Debug.Log("wszedlem");
+		Player_weapons playerWeapons = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_weapons>();
+		string weaponName=playerWeapons.getCurrentWeaponName();
+        Debug.Log("WIELKOSC "+listItemFrame.Count);
+        Debug.Log("WIELKOSC "+weaponName);
+		foreach (ItemFrame frame in listItemFrame)
+		{
+            if (frame.name.Equals(weaponName))
+			    frame.changeColor(Color.cyan);
+		}
+	}
 
 }

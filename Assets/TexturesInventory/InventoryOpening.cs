@@ -28,9 +28,10 @@ public class InventoryOpening : MonoBehaviour {
 
             Debug.Log("wszedlem");
             opened=true;
-			Debug.Log("otwieram inventory " +i++);
+		//	Debug.Log("otwieram inventory " +i++);
 			inventoryPanel.SetActive(true);
 			inventoryMenu.updateInventory();
+			
 			
         }
 		if (Input.GetKey (KeyCode.O) && opened==true)
@@ -40,10 +41,11 @@ public class InventoryOpening : MonoBehaviour {
             //WeaponEnd.transform.parent = sword2.;
 
             opened =false;
-			Debug.Log("zamykam inventory " +i++);
+			//Debug.Log("zamykam inventory " +i++);
 			inventoryPanel.SetActive(false);
 		
         }
 		
 	}
+	
 }
