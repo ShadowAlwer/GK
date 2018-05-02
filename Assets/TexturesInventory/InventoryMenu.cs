@@ -16,48 +16,79 @@ public class InventoryMenu : MonoBehaviour {
     RectTransform item_frame_rt, tmp_rt, rect_trans;
     ItemFrame tmpIF;
     PlayerInventory playerInventory;
+    [HideInInspector]
+    public List<ItemFrame> itemFrames;
+    int rectSize;
+
     void Awake ()
     {
         playerInventory = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PlayerInventory>();
         item_frame_rt = itemFrame.GetComponent<RectTransform>();
-        //rect_trans = gameObject.GetComponent<RectTransform>();
+      //  rect_trans = gameObject.GetComponent<RectTransform>();
     }   
     void Start ()
     {
-        updateMenu();
+        disableIcons();
+        activeIcons(1);
     }
-	
-    public void updateMenu()
+
+    public void updateInventory()
     {
-	   //disableIcons();
-		//activeIcons(0);
-        listItemFrame.Clear();
-        for (int i = 0; i < playerInventory.inventory.Count; ++i)
+        while (itemFrames.Count != 0)
         {
-            tmp = GameObject.Instantiate(itemFrame);
-            tmp.transform.SetParent(gameObject.transform);
-            tmp_rt = tmp.GetComponent<RectTransform>();
-            tmp_rt.localScale = item_frame_rt.localScale;
-            tmp_rt.anchoredPosition = item_frame_rt.anchoredPosition;
-            tmp_rt.anchoredPosition += new Vector2(0, (item_frame_rt.rect.height + 1.5f) * -i);
-            tmpIF = tmp.GetComponent<ItemFrame>();
-			//Debug.Log(playerInventory.inventory[i].name);
-			//Debug.Log(playerInventory.inventory[i].value);
-            tmpIF.name = playerInventory.inventory[i].name;
-            tmpIF.value = playerInventory.inventory[i].value;
-            tmpIF.item=playerInventory.inventory[i];
-            tmpIF.setValues();
-            tmp.SetActive(true);
-            gameObject.SetActive(true);
-            listItemFrame.Add(tmpIF);
-            //Debug.Log("updateuje menu");
+            GameObject go = itemFrames[0].gameObject;
+            itemFrames.RemoveAt(0);
+            GameObject.Destroy(go);
         }
+        rectSize = 0;
+        //  disableIcons();
+        //activeIcons(1);
+        // listItemFrame.Clear();
+        //for (int i = 0; i < playerInventory.inventory.Count; ++i)
+        //{
+
+        //}
+        itemFrame.SetActive(true);
+        if (iconFilter == IconFilter.all || iconFilter == IconFilter.weapon)
+            for (int i = 0; i < playerInventory.inv_weapon.Count; ++i)
+                drawItem(playerInventory.inv_weapon[i]);
+        if (iconFilter == IconFilter.all || iconFilter == IconFilter.potion)
+            for (int i = 0; i < playerInventory.inv_potion.Count; ++i)
+              drawItem(playerInventory.inv_potion[i]);
+        if (iconFilter == IconFilter.all)
+            for (int i = 0; i < playerInventory.inv_other.Count; ++i)
+              drawItem(playerInventory.inv_other[i]);
+
+        
         itemFrame.SetActive(false);
-        //rect_trans.sizeDelta = new Vector2(0, (item_frame_rt.rect.height + 1.5f) * pi.inventory.Count);
-       // rect_trans.anchoredPosition += new Vector2(0, -(item_frame_rt.rect.height + 1.5f) * pi.inventory.Count / 2);
+     //   rect_trans.sizeDelta = new Vector2(0, (item_frame_rt.rect.height + 1.5f) * rectSize);
+     //   rect_trans.anchoredPosition += new Vector2(0, -(item_frame_rt.rect.height + 1.5f) * rectSize / 2);
     
     }
-	public void disableIcons()
+
+    void drawItem(Item it)
+    {
+        tmp = GameObject.Instantiate(itemFrame);
+        tmp.transform.SetParent(gameObject.transform);
+        tmp_rt = tmp.GetComponent<RectTransform>();
+        tmp_rt.localScale = item_frame_rt.localScale;
+        tmp_rt.anchoredPosition = item_frame_rt.anchoredPosition;
+        tmp_rt.anchoredPosition += new Vector2(0, (item_frame_rt.rect.height + 1.5f) * -rectSize);
+        tmpIF = tmp.GetComponent<ItemFrame>();
+        itemFrames.Add(tmpIF);
+        //Debug.Log(playerInventory.inventory[i].name);
+        //Debug.Log(playerInventory.inventory[i].value);
+        tmpIF.name = it.name;
+        tmpIF.value = it.value;
+        //tmpIF.item = it;
+        tmpIF.setValues();
+        //tmp.SetActive(true);
+        //gameObject.SetActive(true);
+        //listItemFrame.Add(tmpIF);
+        //Debug.Log("updateuje menu");
+        rectSize++;
+    }
+    public void disableIcons()
 	{
 		foreach (InventoryIcon ic in icons)
 		{
@@ -74,6 +105,22 @@ public class InventoryMenu : MonoBehaviour {
 	public void activeIcons(int iconNumber)
 	{
 		icons[iconNumber].changeColor(iconActive);
-	}
+
+        switch (iconNumber) {
+            case 0:
+                iconFilter = IconFilter.all;
+                break;
+            case 1:
+                iconFilter = IconFilter.weapon;
+                break;
+            case 2:
+                iconFilter = IconFilter.potion;
+                break;
+            default:
+                break;
+        }
+        updateInventory();
+
+    }
 
 }

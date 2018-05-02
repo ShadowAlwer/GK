@@ -5,6 +5,7 @@ using UnityEngine;
 public class DoorOpen : MonoBehaviour {
 
     public Transform door;
+    public int goldRequired;
 
     public Vector3 closedPosition = new Vector3(.51f, 3.63f, 0);
     public Vector3 openPosition = new Vector3(.51f, 7, 0);
@@ -16,7 +17,7 @@ public class DoorOpen : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (open)
+        if (open && FindObjectOfType<GameManager>().currentGold >= goldRequired)
         {
             door.position = Vector3.Lerp(door.position, openPosition, Time.deltaTime * openSpeed);
         }
@@ -27,6 +28,12 @@ public class DoorOpen : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
+        if (FindObjectOfType<GameManager>().currentGold < goldRequired)
+       {
+           FindObjectOfType<GameManager>().goldRequiredText.text = "Gold required: " + goldRequired;
+           FindObjectOfType<GameManager>().goldRequiredText.enabled = true;
+       }
+
         if (other.tag == "Player")
         {
             OpenDoor();
@@ -38,6 +45,7 @@ public class DoorOpen : MonoBehaviour {
         if (other.tag == "Player")
         {
             CloseDoor();
+            FindObjectOfType<GameManager>().goldRequiredText.enabled = false;
         }
     }
 

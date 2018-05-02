@@ -30,7 +30,7 @@ public class InventoryOpening : MonoBehaviour {
             opened=true;
 			Debug.Log("otwieram inventory " +i++);
 			inventoryPanel.SetActive(true);
-			inventoryMenu.updateMenu();
+			inventoryMenu.updateInventory();
 			
         }
 		if (Input.GetKey (KeyCode.O) && opened==true)

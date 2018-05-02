@@ -18,7 +18,7 @@ public class ItemInfo : MonoBehaviour {
     void Awake ()
     {
         playerInventory = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PlayerInventory>() as PlayerInventory;
-        Debug.Log(playerInventory.inventory.Count);
+     //   Debug.Log(playerInventory.inventory.Count);
     }
     
     void Start ()
@@ -45,8 +45,9 @@ public class ItemInfo : MonoBehaviour {
     }
     void OnMouseDown ()
     {
-        GameObject.Destroy(gameObject);
-        playerInventory.inventory.Add(item);
         
+        playerInventory.AddToInventory(item);
+        GameObject.Destroy(gameObject);
+
     }
 }
