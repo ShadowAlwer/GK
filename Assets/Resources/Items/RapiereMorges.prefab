@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23000012370331676}
   - component: {fileID: 136601690507689942}
   - component: {fileID: 54345526550195332}
+  - component: {fileID: 114700396564487506}
   m_Layer: 0
   m_Name: RapiereMorges
   m_TagString: Untagged
@@ -102,6 +103,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &114700396564487506
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013926337356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 777e34dc9687dcb429fc285b0f98b7c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 2
 --- !u!136 &136601690507689942
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18029535, g: 0.22572681, b: 0.30692968, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -572,7 +572,9 @@ Prefab:
       propertyPath: m_Height
       value: 0.9
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
+    - {fileID: 114446714605286152, guid: f473ff0e998e12e4780602752b5b7b44, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: f473ff0e998e12e4780602752b5b7b44, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &70344366 stripped
@@ -603,6 +605,18 @@ MonoBehaviour:
   damage: 10
   healValue: 0
   defense: 0
+--- !u!114 &70344368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 70344366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 777e34dc9687dcb429fc285b0f98b7c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 3
 --- !u!1 &71526227
 GameObject:
   m_ObjectHideFlags: 0
@@ -7189,7 +7203,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 475962693}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 140, y: 10, z: 140}
+  m_LocalPosition: {x: 133.83, y: 8.84, z: 140.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1731653089}
@@ -7929,7 +7943,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 26
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114700396564487506, guid: 8d6f5f842f363d64b941b378902051e0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 8d6f5f842f363d64b941b378902051e0, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &606356978 stripped
@@ -7961,6 +7976,18 @@ MonoBehaviour:
   damage: 3
   healValue: 0
   defense: 0
+--- !u!114 &606356980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 606356978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 777e34dc9687dcb429fc285b0f98b7c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 2
 --- !u!1 &610300647
 GameObject:
   m_ObjectHideFlags: 0
@@ -13197,6 +13224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 1713942837}
+  goldRequired: 0
   closedPosition: {x: 97.6, y: 6.5, z: 182}
   openPosition: {x: 97.6, y: 13, z: 182}
   openSpeed: 5
@@ -14862,6 +14890,7 @@ MonoBehaviour:
   - {fileID: 1365121825}
   - {fileID: 2100639682}
   - {fileID: 591334185}
+  itemFrames: []
 --- !u!1001 &1182517783
 Prefab:
   m_ObjectHideFlags: 0
@@ -15400,6 +15429,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentGold: 0
   goldText: {fileID: 1867939700}
+  currentCameraState: 1
+  goldRequiredText: {fileID: 0}
 --- !u!4 &1208361722
 Transform:
   m_ObjectHideFlags: 0
@@ -15424,7 +15455,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5251107afc536429be1d373e2c5537, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: []
+  inv_weapon: []
+  inv_potion: []
+  inv_other: []
 --- !u!114 &1208361724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19183,6 +19216,18 @@ GameObject:
   m_PrefabParentObject: {fileID: 1248585176499654, guid: 00858d8be56a4674da4f5351a1317198,
     type: 2}
   m_PrefabInternal: {fileID: 127757389}
+--- !u!114 &1299409637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1299409636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 777e34dc9687dcb429fc285b0f98b7c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
 --- !u!54 &1299409640
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -23358,7 +23403,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 28
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114971497738500930, guid: af10a2495c3f5be4485414febac3b8a4, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: af10a2495c3f5be4485414febac3b8a4, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1384743839 stripped
@@ -23390,6 +23436,18 @@ MonoBehaviour:
   damage: 4
   healValue: 0
   defense: 0
+--- !u!114 &1384743841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1384743839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 777e34dc9687dcb429fc285b0f98b7c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 2
 --- !u!1 &1388134434
 GameObject:
   m_ObjectHideFlags: 0
@@ -28684,6 +28742,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 1749915373}
+  goldRequired: 0
   closedPosition: {x: 74.8, y: 3.63, z: 100.6}
   openPosition: {x: 74.8, y: 22, z: 100.6}
   openSpeed: 5
@@ -37773,7 +37832,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 27
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114137470048089514, guid: d2d6271d73565e8428e8a9034dd29512, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: d2d6271d73565e8428e8a9034dd29512, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &2083272534 stripped
@@ -37805,6 +37865,18 @@ MonoBehaviour:
   damage: 3
   healValue: 0
   defense: 0
+--- !u!114 &2083272536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2083272534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 777e34dc9687dcb429fc285b0f98b7c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
 --- !u!1 &2100639678
 GameObject:
   m_ObjectHideFlags: 0

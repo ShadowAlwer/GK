@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23000013767912440}
   - component: {fileID: 54077760783267910}
   - component: {fileID: 136237291845923200}
+  - component: {fileID: 114568964608764054}
   m_Layer: 0
   m_Name: Bardiche
   m_TagString: Untagged
@@ -102,6 +103,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &114568964608764054
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012861833992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 777e34dc9687dcb429fc285b0f98b7c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
 --- !u!136 &136237291845923200
 CapsuleCollider:
   m_ObjectHideFlags: 1
