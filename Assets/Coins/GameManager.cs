@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour {
 
     public int currentGold;
     public Text goldText;
+    public bool currentCameraState = true;
 	// Use this for initialization
 	void Start () {
 		

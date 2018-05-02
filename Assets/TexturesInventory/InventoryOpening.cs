@@ -24,7 +24,9 @@ public class InventoryOpening : MonoBehaviour {
 
 		if (Input.GetKey (KeyCode.I) && opened==false )
         {
-			Debug.Log("wszedlem");
+            FindObjectOfType<GameManager>().currentCameraState = false;
+
+            Debug.Log("wszedlem");
             opened=true;
 			Debug.Log("otwieram inventory " +i++);
 			inventoryPanel.SetActive(true);
@@ -33,11 +35,11 @@ public class InventoryOpening : MonoBehaviour {
         }
 		if (Input.GetKey (KeyCode.O) && opened==true)
         {
-			
-			//WeaponEnd.transform.parent=sword2.transform;
-			//WeaponEnd.transform.parent = sword2.;
+            FindObjectOfType<GameManager>().currentCameraState = true;
+            //WeaponEnd.transform.parent=sword2.transform;
+            //WeaponEnd.transform.parent = sword2.;
 
-			opened=false;
+            opened =false;
 			Debug.Log("zamykam inventory " +i++);
 			inventoryPanel.SetActive(false);
 		
