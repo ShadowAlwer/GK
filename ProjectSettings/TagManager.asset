@@ -11,6 +11,7 @@ TagManager:
   - inventory
   - WeaponEnd
   - Items
+  - Enemy
   layers:
   - Default
   - TransparentFX

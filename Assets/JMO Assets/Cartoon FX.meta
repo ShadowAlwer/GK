@@ -1,2 +1,14 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: c865e48369a325f4784ecd8444d1ec51
+=======
+guid: ccd6738339d1fc5499719893400c4ba8
+folderAsset: yes
+timeCreated: 1525448016
+licenseType: Free
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+>>>>>>> pawel/master
