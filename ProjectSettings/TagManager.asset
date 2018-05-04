@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Terrain
   - gui.HP
+  - Enemy
   layers:
   - Default
   - TransparentFX
