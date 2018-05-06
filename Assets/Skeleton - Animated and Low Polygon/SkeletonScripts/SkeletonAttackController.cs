@@ -29,9 +29,9 @@ public class SkeletonAttackController : MonoBehaviour {
 
             collision.gameObject.GetComponent<PlayerStats>().TakeDamage(damage);
         }
-        if (isProjectile && collision.gameObject.tag!="Skeleton")
+        if (isProjectile && collision.gameObject.tag!="Enemy")
         {
-            
+            Debug.Log("Fireball Destroyed");
             Destroy(gameObject);
         }
 

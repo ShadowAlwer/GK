@@ -73,7 +73,7 @@ public class EnemyController : MonoBehaviour
                     Vector3 direction = (target.position - spellPoint.transform.position).normalized;                                       
                     spell.GetComponent<Transform>().rotation = spellPoint.transform.rotation;
                     spell.GetComponent<Transform>().Rotate(0,-90,0);
-
+                    Debug.Log("Fireball Created!");
             }
             else
             {

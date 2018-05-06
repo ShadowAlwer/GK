@@ -520,9 +520,10 @@ GameObject:
   - component: {fileID: 114139539470444632}
   - component: {fileID: 114862330270777682}
   - component: {fileID: 195579452948424432}
+  - component: {fileID: 114763709669899822}
   m_Layer: 0
   m_Name: skeletonMage
-  m_TagString: Skeleton
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2131,6 +2132,18 @@ MonoBehaviour:
   velocity: {x: 0, y: 0}
   fireball: {fileID: 1596542040005204, guid: 78bc807a365602b46aa3dfa854f027c6, type: 2}
   spellPoint: {fileID: 4157837449426140}
+--- !u!114 &114763709669899822
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1478859492472958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a813b29f553a0fb4e962cd85b5c4bcb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
 --- !u!114 &114862330270777682
 MonoBehaviour:
   m_ObjectHideFlags: 1
