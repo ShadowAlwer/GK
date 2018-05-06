@@ -11,6 +11,10 @@ public class PlayerStats : MonoBehaviour {
 	// Use this for initialization
 	void Start () {       
     }
+    public void addPotionValue(int hp)
+    {
+        hitpoints= (hitpoints+hp)>10 ? 10: hitpoints+hp;
+    }
 	
 	// Update is called once per frame
 	void Update () {

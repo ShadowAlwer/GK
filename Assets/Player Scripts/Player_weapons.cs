@@ -6,8 +6,6 @@ public class Player_weapons : MonoBehaviour {
 
 	// Use this for initialization
 	Animator anim;
-	public GameObject[] weapons;
-	int currentWeapon=0;
 	bool equiped;
 	GameObject currentWeaponGameObject;
 	string nameOfCurrentWeapon;
@@ -22,19 +20,19 @@ public class Player_weapons : MonoBehaviour {
 	}
 	void Start () {
 		 anim = GetComponent <Animator> ();
-		 currentWeaponGameObject=weapons[0];
+		 currentWeaponGameObject=null;
 	}
 	// Update is called once per frame
 	void Update () {
 		//currentWeaponGameObject.transform.position=new Vector3(100,100,100);
 		if (Input.GetKey (KeyCode.Z))
         {
-            if (anim.GetCurrentAnimatorStateInfo (0).IsTag ("idle"))
+            if (anim.GetCurrentAnimatorStateInfo (0).IsTag ("idle")&& currentWeaponGameObject!=null)
             {
 				anim.SetBool ("equipingWeapon",true);
 				displayWeapon();
 			}
-            else if (anim.GetCurrentAnimatorStateInfo (0).IsTag ("idleWeap"))
+            else if (anim.GetCurrentAnimatorStateInfo (0).IsTag ("idleWeap")&& currentWeaponGameObject!=null)
 			{
 				anim.SetBool ("hidingWeapon",true);
 				hideWeapon();

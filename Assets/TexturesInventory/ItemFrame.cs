@@ -28,6 +28,17 @@ public class ItemFrame : MonoBehaviour {
             
             
         }
+        if (item is Potion)
+        {
+            Potion potion=(Potion) item;
+            PlayerStats playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+            playerStats.addPotionValue(potion.healValue);
+            disableFrame();
+            changeColor(Color.cyan);
+            GameObject.Destroy(gameObject);
+            
+            
+        }
 	}
     public void changeColor(Color color)
 	{
