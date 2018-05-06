@@ -843,9 +843,10 @@ GameObject:
   - component: {fileID: 65162596771164778}
   - component: {fileID: 114909881356934928}
   - component: {fileID: 195521934070269694}
+  - component: {fileID: 114800501888623916}
   m_Layer: 0
   m_Name: skeletonWarrior
-  m_TagString: Skeleton
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2222,6 +2223,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   isProjectile: 0
+--- !u!114 &114800501888623916
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1784684012828812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a813b29f553a0fb4e962cd85b5c4bcb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
 --- !u!114 &114909881356934928
 MonoBehaviour:
   m_ObjectHideFlags: 1
