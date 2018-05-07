@@ -26,7 +26,6 @@ public class InventoryOpening : MonoBehaviour {
         {
             FindObjectOfType<GameManager>().currentCameraState = false;
 
-            Debug.Log("wszedlem");
             opened=true;
 		//	Debug.Log("otwieram inventory " +i++);
 			inventoryPanel.SetActive(true);

@@ -66,17 +66,38 @@ public class PlayerInventory : MonoBehaviour {
     {
         if (it is Weapon)
         {
+            Debug.Log("Dodano  bron");
             inv_weapon.Add((Weapon)it);
             inv_weapon.Sort();
         }
         else if (it is Potion)
         {
+            Debug.Log("Dodano potke do inventory");
             inv_potion.Add((Potion)it);
             inv_potion.Sort();
         }
         else
         {
+            Debug.Log("Dodano  other");
             inv_other.Add(it);
+            inv_other.Sort();
+        }
+    }
+    public void removeFromInventory(Item it)
+    {
+        if (it is Weapon)
+        {
+            inv_weapon.Remove((Weapon)it);
+            inv_weapon.Sort();
+        }
+        else if (it is Potion)
+        {
+            inv_potion.Remove((Potion)it);
+            inv_potion.Sort();
+        }
+        else
+        {
+            inv_other.Remove(it);
             inv_other.Sort();
         }
     }

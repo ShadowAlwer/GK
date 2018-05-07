@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 136991083044234838}
   - component: {fileID: 54928126975885970}
   - component: {fileID: 114137470048089514}
+  - component: {fileID: 136218611177292812}
   m_Layer: 0
   m_Name: Katana
   m_TagString: Untagged
@@ -114,6 +115,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+--- !u!136 &136218611177292812
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012688623878}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.06
+  m_Height: 0.003043998
+  m_Direction: 1
+  m_Center: {x: -0.00033166434, y: 2.9103817e-10, z: 0.013723715}
 --- !u!136 &136991083044234838
 CapsuleCollider:
   m_ObjectHideFlags: 1

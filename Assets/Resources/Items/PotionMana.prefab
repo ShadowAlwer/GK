@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2353708}
   - component: {fileID: 136052967019772950}
   - component: {fileID: 54524012569809308}
+  - component: {fileID: 136095014287581120}
   m_Layer: 0
   m_Name: PotionMana
   m_TagString: Untagged
@@ -132,3 +133,16 @@ CapsuleCollider:
   m_Height: 0.21674028
   m_Direction: 1
   m_Center: {x: -0.000000059604645, y: 0.000000007450581, z: 0.0511166}
+--- !u!136 &136095014287581120
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 197236}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 2
+  m_Height: 0.003043998
+  m_Direction: 1
+  m_Center: {x: -0.00033166434, y: 2.9103817e-10, z: 0.013723715}

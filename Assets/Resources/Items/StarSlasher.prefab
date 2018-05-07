@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 54085543165913148}
   - component: {fileID: 136872867971033634}
   - component: {fileID: 114446714605286152}
+  - component: {fileID: 136354427023296964}
   m_Layer: 0
   m_Name: StarSlasher
   m_TagString: Untagged
@@ -112,6 +113,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 3
+--- !u!136 &136354427023296964
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 119738}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.06
+  m_Height: 0.003043998
+  m_Direction: 1
+  m_Center: {x: -0.00033166434, y: 2.9103817e-10, z: 0.013723715}
 --- !u!136 &136872867971033634
 CapsuleCollider:
   m_ObjectHideFlags: 1

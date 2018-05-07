@@ -16,9 +16,13 @@ public class ItemInfo : MonoBehaviour {
     public int damage;
     public int healValue;
     public int defense;
+
+    GameObject helperPanel;
     void Awake ()
     {
         playerInventory = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PlayerInventory>() as PlayerInventory;
+        helperPanel=GameObject.FindGameObjectWithTag("Helper");
+        //helperPanel.SetActive(false);
      //   Debug.Log(playerInventory.inventory.Count);
     }
     
@@ -46,9 +50,36 @@ public class ItemInfo : MonoBehaviour {
     }
     void OnMouseDown ()
     {
-        
+        Debug.Log("Probuje dodac rzecz");
         playerInventory.AddToInventory(item);
         GameObject.Destroy(gameObject);
 
+    }
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider.tag.Equals("Player"))
+        {
+            Debug.Log("WCHODZE");
+            helperPanel.SetActive(true);
+            
+        }
+    }
+    void OnTriggerStay(Collider collider)
+    {
+        if (Input.GetKey(KeyCode.F) && collider.tag.Equals("Player"))
+        {
+            Debug.Log("DODAJE");
+            playerInventory.AddToInventory(item);
+            GameObject.Destroy(gameObject);
+            helperPanel.SetActive(false);
+        }
+    }
+    void OnTriggerExit(Collider collider)
+    {
+        if (collider.tag.Equals("Player"))
+        {
+            Debug.Log("WYCHODZE");
+            helperPanel.SetActive(false);
+        }
     }
 }

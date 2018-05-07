@@ -125,11 +125,8 @@ public class InventoryMenu : MonoBehaviour {
     }
     public void highlightCurrentWeapon()
 	{
-        Debug.Log("wszedlem");
 		Player_weapons playerWeapons = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_weapons>();
 		string weaponName=playerWeapons.getCurrentWeaponName();
-        Debug.Log("WIELKOSC "+listItemFrame.Count);
-        Debug.Log("WIELKOSC "+weaponName);
 		foreach (ItemFrame frame in listItemFrame)
 		{
             if (frame.name.Equals(weaponName))

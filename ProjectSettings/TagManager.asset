@@ -12,6 +12,7 @@ TagManager:
   - WeaponEnd
   - Items
   - Enemy
+  - Helper
   layers:
   - Default
   - TransparentFX

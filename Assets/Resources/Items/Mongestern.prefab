@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 54511616299835716}
   - component: {fileID: 136325210258274216}
   - component: {fileID: 114511000879059802}
+  - component: {fileID: 136911522535774372}
   m_Layer: 0
   m_Name: Mongestern
   m_TagString: Untagged
@@ -127,3 +128,16 @@ CapsuleCollider:
   m_Height: 0.008041765
   m_Direction: 1
   m_Center: {x: 3.4924597e-10, y: 0, z: 0.009409376}
+--- !u!136 &136911522535774372
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012768984546}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.06
+  m_Height: 0.003043998
+  m_Direction: 1
+  m_Center: {x: -0.00033166434, y: 2.9103817e-10, z: 0.013723715}
