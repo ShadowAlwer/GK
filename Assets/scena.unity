@@ -959,7 +959,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -885627217
+  randomSeed: 1911166223
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -7797,8 +7797,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5861e2eaa6e29004a87c0678499628a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons:
-  - {fileID: 1388134434}
 --- !u!114 &475962695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7913,6 +7911,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitpoints: 10
   hpGUI: {fileID: 1354584012}
+  bloodPrefab: {fileID: 1063921498339864, guid: 330047eee511de143adee5bf360ee1c7,
+    type: 2}
 --- !u!4 &481061053 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: bac89f5097fa05f4bab0931139e20cf1, type: 3}
@@ -11909,7 +11909,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 54055585
+  randomSeed: -1397361331
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -18274,7 +18274,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1634545075
+  randomSeed: 344716280
   InitialModule:
     serializedVersion: 3
     enabled: 1
