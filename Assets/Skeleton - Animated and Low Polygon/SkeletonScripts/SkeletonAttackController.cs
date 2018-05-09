@@ -6,6 +6,7 @@ public class SkeletonAttackController : MonoBehaviour {
 
     public int damage;
     public bool isProjectile;
+    
 
 	// Use this for initialization
 	void Start () {
@@ -16,8 +17,8 @@ public class SkeletonAttackController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        gameObject.GetComponent<Rigidbody>().AddRelativeForce(Vector3.right * 100);
-        //Debug.Log("!!");
+        gameObject.GetComponent<Rigidbody>().AddRelativeForce(Vector3.right * 2);
+        
 
     }
 
@@ -32,7 +33,7 @@ public class SkeletonAttackController : MonoBehaviour {
         if (isProjectile && collision.gameObject.tag!="Enemy")
         {
             Debug.Log("Fireball Destroyed");
-            Destroy(gameObject);
+            Destroy(gameObject,0.15f);
         }
 
     }

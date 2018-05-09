@@ -7,6 +7,7 @@ public class PlayerStats : MonoBehaviour {
 
     public int hitpoints;
     public Text hpGUI;
+    public GameObject bloodPrefab;
 
 	// Use this for initialization
 	void Start () {       
@@ -24,6 +25,8 @@ public class PlayerStats : MonoBehaviour {
     public void TakeDamage(int damage)
     {
         hitpoints -= damage;
+        var blood=Instantiate(bloodPrefab, transform);
+        Destroy(blood, 0.5f);
     }
 
 }
