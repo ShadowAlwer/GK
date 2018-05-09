@@ -88,7 +88,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!65 &65008034751812634
 BoxCollider:
@@ -264,8 +264,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.5294118, g: 0.3249493, b: 0.066176474, a: 1}
-      maxColor: {r: 0.9558824, g: 0.028114215, b: 0.028114215, a: 0.141}
+      minColor: {r: 0.7352941, g: 0.019397784, b: 0.0054065795, a: 1}
+      maxColor: {r: 1, g: 0, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 0.8235294, g: 0.07266438, b: 0.07266438, a: 1}
@@ -2694,7 +2694,7 @@ ParticleSystem:
       type: 0
       properties: 0
   LightsModule:
-    enabled: 1
+    enabled: 0
     ratio: 1
     light: {fileID: 108578409952709898, guid: 8c4590ed2fa466e4dabcff17ad32ab7e, type: 2}
     randomDistribution: 1
