@@ -13,10 +13,10 @@ public class GameManager : MonoBehaviour {
     void Start () {
 //        goldRequiredText.enabled = false;
     }
-	
+
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
 
     public void AddGold(int goldValue)
