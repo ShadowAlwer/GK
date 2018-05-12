@@ -33,6 +33,10 @@ public class PlayerStats : MonoBehaviour {
             coinLostUI.text = "Collected: " + gm.currentGold + " gold!";
             goldText.SetActive(false);
             hpGUI.enabled = false;
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject i in enemies) {
+                i.SetActive(false);
+            }
             gameLostUI.SetActive(true);
         } else {
             var blood=Instantiate(bloodPrefab, transform);
