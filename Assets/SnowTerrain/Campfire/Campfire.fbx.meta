@@ -1,24 +1,27 @@
 fileFormatVersion: 2
-guid: 950f417f0f4a14845a83807e52d588b0
-timeCreated: 1525878875
+guid: 6b0c9a83caab5c94bbfeb9f49d16f2e2
+timeCreated: 1526063897
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Layer_1
+    100002: Cylinder_002
+    100004: Cylinder_003
     400000: //RootNode
-    400002: Layer_1
-    2100000: Layer_1Mat
-    2300000: Layer_1
-    3300000: Layer_1
-    4300000: Layer_1
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Layer_1Mat
-    second: {fileID: 2100000, guid: 34b9fde102a217442832d1d85414765d, type: 2}
+    400002: Cylinder_002
+    400004: Cylinder_003
+    2100000: None__StoneBase
+    2100002: None__Logs
+    2300000: Cylinder_002
+    2300002: Cylinder_003
+    3300000: Cylinder_002
+    3300002: Cylinder_003
+    4300000: Cylinder_003
+    4300002: Cylinder_002
+    7400000: Default Take
+    9500000: //RootNode
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
@@ -48,7 +51,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 30
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -92,7 +95,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
