@@ -17,7 +17,7 @@ public class SkeletonAttackController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        gameObject.GetComponent<Rigidbody>().AddRelativeForce(Vector3.right * 2);
+        gameObject.GetComponent<Rigidbody>().AddRelativeForce(Vector3.right * 50);
         
 
     }

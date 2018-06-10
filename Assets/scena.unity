@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18029535, g: 0.22572681, b: 0.30692968, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -988,7 +988,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1911166223
+  randomSeed: 486894331
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -6437,6 +6437,7 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+  m_TileRefreshArray: []
 --- !u!1001 &282524797
 Prefab:
   m_ObjectHideFlags: 0
@@ -12207,7 +12208,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1301662303
+  randomSeed: -304364556
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -18856,7 +18857,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1775733379
+  randomSeed: -566549868
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -27351,6 +27352,14 @@ Prefab:
     - target: {fileID: 4839736051656388, guid: ee08e039f12f928428c1da65bd89a956, type: 2}
       propertyPath: m_LocalScale.z
       value: 2.1487496
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157837449426140, guid: ee08e039f12f928428c1da65bd89a956, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157837449426140, guid: ee08e039f12f928428c1da65bd89a956, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.002
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ee08e039f12f928428c1da65bd89a956, type: 2}
