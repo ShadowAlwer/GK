@@ -9,15 +9,12 @@ public class SkeletonAttackController : MonoBehaviour {
     
 
 	// Use this for initialization
-	void Start () {
-
-        //gameObject.GetComponent<Rigidbody>().AddRelativeForce(Vector3.right*1000);
-		
-	}
+	void Start () { }		
+	
 	
 	// Update is called once per frame
 	void Update () {
-        gameObject.GetComponent<Rigidbody>().AddRelativeForce(Vector3.right * 2);
+        gameObject.GetComponent<Rigidbody>().AddRelativeForce(Vector3.right * 50);
         
 
     }
