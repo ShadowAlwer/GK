@@ -38,6 +38,7 @@ public class PlayerStats : MonoBehaviour {
                 i.SetActive(false);
             }
             gameLostUI.SetActive(true);
+            FindObjectOfType<GameManager>().currentCameraState = false;
         } else {
             var blood=Instantiate(bloodPrefab, transform);
             Destroy(blood, 0.5f);

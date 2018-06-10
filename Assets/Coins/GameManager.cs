@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour {
     public Text goldText;
     public bool currentCameraState = true;
     public Text goldRequiredText;
+    public GameObject gameMenuUI;
+    bool active = false;
     // Use this for initialization
     void Start () {
 //        goldRequiredText.enabled = false;
@@ -16,7 +18,11 @@ public class GameManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            currentCameraState = active;
+            active = !active;
+            gameMenuUI.SetActive(active);
+        }
 	}
 
     public void AddGold(int goldValue)
