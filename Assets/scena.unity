@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1802834, g: 0.2257135, b: 0.3069223, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1874,7 +1874,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -840590717
+  randomSeed: -927464764
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -5779,6 +5779,11 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 2.1487496
       objectReference: {fileID: 0}
+    - target: {fileID: 33363340570195784, guid: ee08e039f12f928428c1da65bd89a956,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: eccac8a30d1100842b1ddc89b703d7e9, type: 3}
     m_RemovedComponents:
     - {fileID: 114862330270777682, guid: ee08e039f12f928428c1da65bd89a956, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: ee08e039f12f928428c1da65bd89a956, type: 2}
@@ -13079,7 +13084,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1219869177
+  randomSeed: 776462729
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -19373,7 +19378,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1319334704
+  randomSeed: 798429736
   InitialModule:
     serializedVersion: 3
     enabled: 1
