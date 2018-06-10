@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1802834, g: 0.2257135, b: 0.3069223, a: 1}
+  m_IndirectSpecularColor: {r: 0.18029535, g: 0.22572681, b: 0.30692968, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -12352,7 +12352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 1713942837}
-  goldRequired: 0
+  goldRequired: 4
   closedPosition: {x: 97.6, y: 6.5, z: 182}
   openPosition: {x: 97.6, y: 13, z: 182}
   openSpeed: 5
@@ -13080,7 +13080,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -106760299
+  randomSeed: 685055258
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -25949,7 +25949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 1749915373}
-  goldRequired: 0
+  goldRequired: 9
   closedPosition: {x: 74.8, y: 3.63, z: 100.6}
   openPosition: {x: 74.8, y: 22, z: 100.6}
   openSpeed: 5
