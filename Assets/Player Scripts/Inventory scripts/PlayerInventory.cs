@@ -2,12 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+/**
+* Class which holds information about player inventory.
+*/
 public class PlayerInventory : MonoBehaviour { 
+	/**
+	* List of players weapons.
+	*/
     public List<Weapon> inv_weapon;
+	/**
+	* List of players potions..
+	*/
     public List<Potion> inv_potion;
+	/**
+	* List of players other items.
+	*/
     public List<Item> inv_other;
 
+	/**
+	* Method which initialize inventory and sort inventory.
+	*/
 	void Start()
 	{
         // AddToInventory(new Weapon("matek knife5", "basic poor weapon", false, 100, "items/dagger", 1, 5, new Vector3(0, 0, 0), new Vector3(0, 0, 0)));
@@ -31,7 +45,9 @@ public class PlayerInventory : MonoBehaviour {
         inv_other.Sort();
         //   loadInventory();
     }	
-
+	/**
+	* Method which check if there is a need to save inventory (while pressing F5)
+	*/
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.F5))
@@ -40,6 +56,9 @@ public class PlayerInventory : MonoBehaviour {
                 saveInventory();
         }
     }
+	/**
+	* Method which save inventory.
+	*/
 	 public void saveInventory ()
     {
         InventoryData inventory_data = new InventoryData();
@@ -49,6 +68,9 @@ public class PlayerInventory : MonoBehaviour {
         IOM.save<InventoryData>(inventory_data, "player_inventory");
         Debug.Log("inventory was saved");
     }
+	/**
+	* Method which is used to load inventory from file.
+	*/
     public void loadInventory ()
     {
         if (IOM.fileExists("player_inventory"))
@@ -62,6 +84,9 @@ public class PlayerInventory : MonoBehaviour {
         else
             Debug.Log("inventory was'n loaded, because there is no file");    
     }
+	/**
+	*	Method which add new item to inventory
+	*/
     public void AddToInventory(Item it)
     {
         if (it is Weapon)
@@ -83,6 +108,9 @@ public class PlayerInventory : MonoBehaviour {
             inv_other.Sort();
         }
     }
+	/**
+	* Method which remove item from inventory.
+	*/
     public void removeFromInventory(Item it)
     {
         if (it is Weapon)

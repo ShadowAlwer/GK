@@ -2,36 +2,82 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+/**
+* Class which is responsible for inventory menu.
+*/
 public class InventoryMenu : MonoBehaviour {
 
+	/**
+	* Game object which is item to show.
+	*/
 	public GameObject itemFrame;
+	/**
+	* Field which show if item is selected
+	*/
 	public Color iconActive, iconNotActive;
+	/**
+	* Field which holds state which inventory option is picked
+	* we can show all items, only weapons, potions or armors.
+	*/
 	public enum IconFilter {all, weapon, potion,armor};
+	/**
+	* Field which is used to filter.
+	*/
 	public IconFilter iconFilter;
+	/**
+	* Field which holds icons.
+	*/
 	public InventoryIcon[] icons;
+	/**
+	* Field which is temporary.
+	*/
     GameObject tmp;
-
+	/**
+	* List with items.
+	*/
     List<ItemFrame> listItemFrame=new List<ItemFrame>();
+	/**
+	* Field which holds position of frame.
+	*/
     RectTransform item_frame_rt, tmp_rt, rect_trans;
+	/**
+	* Field which is temporary.
+	*/
     ItemFrame tmpIF;
+	/**
+	* Field which holds player inventory.
+	*/
     PlayerInventory playerInventory;
     [HideInInspector]
+	/**
+	* List of item frames.
+	*/
     public List<ItemFrame> itemFrames;
+	/**
+	* Field which holds size.
+	*/
     int rectSize;
 
+	/**
+	* Method used when inventory is opened.
+	*/
     void Awake ()
     {
         playerInventory = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PlayerInventory>();
         item_frame_rt = itemFrame.GetComponent<RectTransform>();
       //  rect_trans = gameObject.GetComponent<RectTransform>();
     }   
+	/**
+	* Method which starts inventory.
+	*/
     void Start ()
     {
         disableIcons();
         activeIcons(1);
     }
-
+	/**
+	* Method which updates inventory content
+	*/
     public void updateInventory()
     {
         while (itemFrames.Count != 0)
@@ -66,7 +112,9 @@ public class InventoryMenu : MonoBehaviour {
         highlightCurrentWeapon();
         
     }
-
+	/**
+	* Method which draw items in inventory
+	*/
     void drawItem(Item it)
     {
         tmp = GameObject.Instantiate(itemFrame);
@@ -89,6 +137,9 @@ public class InventoryMenu : MonoBehaviour {
         //Debug.Log("updateuje menu");
         rectSize++;
     }
+	/**
+	* Method which disable icons. (show that they are not active)
+	*/
     public void disableIcons()
 	{
 		foreach (InventoryIcon ic in icons)
@@ -96,6 +147,9 @@ public class InventoryMenu : MonoBehaviour {
 			ic.changeColor(iconNotActive);
 		}
 	}
+	/**
+	* Method which disables frames.
+	*/
     public void disableFrame()
 	{
 		foreach (ItemFrame frame in listItemFrame)
@@ -103,6 +157,9 @@ public class InventoryMenu : MonoBehaviour {
 			frame.changeColor(Color.white);
 		}
 	}
+	/**
+	* Method which show actived icons.
+	*/
 	public void activeIcons(int iconNumber)
 	{
 		icons[iconNumber].changeColor(iconActive);
@@ -123,6 +180,9 @@ public class InventoryMenu : MonoBehaviour {
         updateInventory();
 
     }
+	/**
+	* Method which highlight current picked item
+	*/
     public void highlightCurrentWeapon()
 	{
 		Player_weapons playerWeapons = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_weapons>();

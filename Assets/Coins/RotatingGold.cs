@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+* Class which rotate gold object.
+*/
 public class RotatingGold : MonoBehaviour {
 
 	// Use this for initialization
@@ -10,6 +13,10 @@ public class RotatingGold : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
+	/**
+	* In this method we update position of our gold coin.
+	* We use rotate to change position.
+	*/
 	void Update () {
         transform.Rotate(1, 0, 0);
 	}
