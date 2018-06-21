@@ -3,31 +3,97 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-/* Controls the Enemy AI */
+/** 
+ * Controls the Enemy AI 
+ */
 
 public class EnemyController : MonoBehaviour
 {
 
-    public float lookRadius = 10f;  // Detection range for player
+    /**
+     * Detection range for enemy
+     */
+    public float lookRadius = 10f;
+
+    /**
+     * Distance from player
+     */
     public float distance;
+
+    /**
+     * Determines if enemy should move
+     */
     public bool shouldMove;
+
+    /**
+     * Determines if enemy should fight
+     */
     public bool shouldFight;
+
+    /**
+    * Determines if enemy is mage
+    */
     public bool isMage;
+
+    /**
+    * Minimal time between spell casts
+    */
     public float spellCastRate;
+
+    /**
+    * Duration of spell cast animation
+    */
     public float spellCastDuration;
+
+    /**
+    * Time of next spell cast
+    */
     float nextSpellCast;
+
+    /**
+    * Time of next move
+    */
     float nextMove;
+
+    /**
+    * Attacking distance of enemy
+    */
     public float attackingDistance;
 
-    public Transform target;   // Reference to the player
-    NavMeshAgent agent; // Reference to the NavMeshAgent
-    Animator animator;   
+    /**
+    * Reference to the player
+    */
+    public Transform target;
+
+    /**
+    * Reference to the NavMeshAgent
+    */
+    NavMeshAgent agent;
+
+    /**
+    * Reference to the Animator
+    */
+    Animator animator;
+
+    /**
+    *  Velocity of animation
+    */
     public Vector2 velocity;
+
+    /**
+     * Reference to spell prefab
+     */
     public GameObject fireball;
+
+    /**
+     * Transform of point from whitch spells are cast
+     */
     public Transform spellPoint;
     
 
-    // Use this for initialization
+   /**
+    * Inicialization of some variables
+    */
     void Start()
     {
        
@@ -41,7 +107,9 @@ public class EnemyController : MonoBehaviour
         attackingDistance = agent.stoppingDistance;
     }
 
-    // Update is called once per frame
+    /**
+     * Controls the behaviour of enemy AI
+     */
     void Update()
     {
         float time = Time.time;
@@ -113,7 +181,9 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    // Rotate to face the target
+    /*
+     *Rotate to face the target
+     */
     void FaceTarget()
     {
         Vector3 direction = (target.position - transform.position).normalized;
@@ -121,7 +191,9 @@ public class EnemyController : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
     }
 
-    // Show the lookRadius in editor
+    /*
+     * Draws look radius sphere in Unity
+     */
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

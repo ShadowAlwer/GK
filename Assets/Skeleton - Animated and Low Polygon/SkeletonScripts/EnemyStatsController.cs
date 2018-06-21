@@ -2,15 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Controls enemy statistics
+ */
 public class EnemyStatsController : MonoBehaviour {
 
+
+    /**
+     * Enemy hit points
+     */
     public int health;
 
     // Use this for initialization
     void Start () {
     }
 	
-	// Update is called once per frame
+	/**
+     * Checks if skeleton has died
+     */
 	void Update () {
         if (health <= 0)
         {
@@ -20,6 +29,9 @@ public class EnemyStatsController : MonoBehaviour {
         }
 	}
 
+    /**
+     * Decrease enemy hit points
+     */
     public void TakeDamage(int damage)
     {
         health -= damage;

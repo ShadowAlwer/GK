@@ -3,28 +3,66 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+/**
+ * Controls player statistics and updates GUI
+ */
 public class PlayerStats : MonoBehaviour {
 
+    /**
+     * Amount of hitpoints
+     */
     public int hitpoints;
+
+    /**
+     * Reference to hp UI
+     */
     public Text hpGUI;
+
+    /**
+     * Reference to particle effect for blood
+     */
     public GameObject bloodPrefab;
+
+    /**
+     * Reference to game lost UI
+     */
     public GameObject gameLostUI;
+
+    /**
+     * Reference to coin lost UI
+     */
     public Text coinLostUI;
+
+    /**
+     * Reference to gold UI
+     */
     public GameObject goldText;
 
 	// Use this for initialization
-	void Start () {
-    }
+	void Start () {}
+
+    /**
+     * Adds hp after drinking potion
+     */
     public void addPotionValue(int hp)
     {
         hitpoints= (hitpoints+hp)>10 ? 10: hitpoints+hp;
     }
 
-	// Update is called once per frame
+	/**
+     * Updates hp value on GUI
+     */
 	void Update () {
         hpGUI.text = "HP: " + hitpoints;
 	}
 
+
+    /**
+     * Called by enemy attacks
+     * Decrease player hit points
+     * Creates short living blood effect
+     */
     public void TakeDamage(int damage)
     {
         hitpoints -= damage;
