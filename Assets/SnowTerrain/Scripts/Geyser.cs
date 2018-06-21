@@ -2,34 +2,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Class responsible for geysers on third terrain
+ */
 public class Geyser : MonoBehaviour {
 
+    /**
+     * Geyser force flag
+     */
     private bool isForceOn = false;
 
-    // Use this for initialization
-    void Start () {
+    /**
+     * Start geyser activity repeating
+     */
+    void Start() {
         InvokeRepeating("Go", 0f, 5f);
         InvokeRepeating("Wait", 1f, 5f);
     }
 
-    void Go()
-    {
+    /**
+     * Active geyser
+     */
+    void Go() {
         isForceOn = true;
         GetComponent<ParticleSystem>().Play();
     }
 
-    void Wait()
-    {
+    /**
+     * Inactive geyser
+     */
+    void Wait() {
         isForceOn = false;
     }
 
-    // Update is called once per frame
-    void Update () {
-		
-	}
-
-    private void OnTriggerStay(Collider other)
-    {
+    /**
+     * Adds force to player
+     */
+    private void OnTriggerStay(Collider other) {
         if (other.gameObject.tag == "Player" && isForceOn)
         {
             other.GetComponent<Rigidbody>().AddForce(Vector3.up * 1300, ForceMode.Impulse);

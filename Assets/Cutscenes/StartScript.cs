@@ -2,19 +2,59 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Class responsible for start cutsecene
+ */
 public class StartScript : MonoBehaviour {
 
+    /**
+     * Reference to start camera
+     */
     public GameObject startCamera;
+
+    /**
+     * Reference to main camera
+     */
     public GameObject mainCamera;
+
+    /**
+     * Reference to player
+     */
     public GameObject player;
 
-    private Texture2D blackTex;
-    private float alpha = 1;
-    private bool fadingIn = false;
-    private bool fadingOut = false;
-    private bool scaling = false;
+    /**
+     * Reference to statistic canvas
+     */
     private GameObject stats;
 
+    /**
+     * Black texture
+     */
+    private Texture2D blackTex;
+
+    /**
+     * Alpha of black texture
+     */
+    private float alpha = 1;
+
+    /**
+     * Fading in flag
+     */
+    private bool fadingIn = false;
+
+    /**
+     * Fading out flag
+     */
+    private bool fadingOut = false;
+
+    /**
+     * Player scaling flag
+     */
+    private bool scaling = false;
+
+    /**
+     * Initialize black screen and set player position. Start Coroutine for last cutscene
+     */
     void Start () {
         stats = GameObject.Find("CanvasScaled");
         blackTex = new Texture2D(1, 1);
@@ -30,6 +70,9 @@ public class StartScript : MonoBehaviour {
         StartCoroutine(TheSequence());
     }
 
+    /**
+     * Coroutine responsible for cutscene
+     */
     IEnumerator TheSequence() {
         yield return new WaitForSeconds(2);
         fadingIn = true;
@@ -51,11 +94,17 @@ public class StartScript : MonoBehaviour {
         stats.gameObject.GetComponent<Canvas>().enabled = true;
     }
 
+    /**
+     * Sets foreground color
+     */
     void OnGUI() {
         GUI.color = new Color(0, 0, 0, alpha);
         GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), blackTex);
     }
 
+    /**
+     * Changes foreground alpha and player scale
+     */
     void Update () {
         if (fadingIn) {
             alpha = Mathf.Max(alpha - Mathf.Clamp01(Time.deltaTime / 2), 0);
