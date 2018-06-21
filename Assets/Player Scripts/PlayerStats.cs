@@ -24,23 +24,16 @@ public class PlayerStats : MonoBehaviour {
      */
     public GameObject bloodPrefab;
 
-    /**
-     * Reference to game lost UI
-     */
+    /// Reference to menu that appears after death.
     public GameObject gameLostUI;
 
-    /**
-     * Reference to coin lost UI
-     */
+    /// Text presenting final collected gold.
     public Text coinLostUI;
 
     /**
      * Reference to gold UI
      */
     public GameObject goldText;
-
-	// Use this for initialization
-	void Start () {}
 
     /**
      * Adds hp after drinking potion
@@ -62,6 +55,7 @@ public class PlayerStats : MonoBehaviour {
      * Called by enemy attacks
      * Decrease player hit points
      * Creates short living blood effect
+     * Enables menu after players death.
      */
     public void TakeDamage(int damage)
     {

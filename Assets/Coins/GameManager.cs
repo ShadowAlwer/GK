@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour {
 	/**
 	* Field which is used to show text on screen with current gold value.
 	*/
-    public Text goldText;	
+    public Text goldText;
 	/**
 	* Field which holds current camera state.
 	*/
@@ -25,24 +25,14 @@ public class GameManager : MonoBehaviour {
 	* enough gold when tries to pass wall.
 	*/
     public Text goldRequiredText;
-	/**
-	* Field which holds menu UI.
-	*/
-    public GameObject gameMenuUI;
-	/**
-	* Field which holds camera state.
-	*/
-    bool active = false;
-    // Use this for initialization
-    void Start () {
-//        goldRequiredText.enabled = false;
-    }
 
-	// Update is called once per frame
-	/**
-	* Update method holds state if player want to quit game.
-	* If he press ESC then camera freezes and menu UI i shown.
-	*/
+	/// Reference to menu to activate.
+    public GameObject gameMenuUI;
+
+	/// Is menu active.
+    private bool active = false;
+
+	/// Shows main menu when user presses escape button.
 	void Update () {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             currentCameraState = active;
