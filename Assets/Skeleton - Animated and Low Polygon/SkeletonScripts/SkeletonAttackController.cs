@@ -29,7 +29,7 @@ public class SkeletonAttackController : MonoBehaviour {
         gameObject.GetComponent<Rigidbody>().AddRelativeForce(Vector3.right * 50);      
     }
 
-    /*
+    /**
      * Resolves collisions
      * If collision is with Player deals damage to it
      * If spell hits something that isn't skeleton spell will be destroyed

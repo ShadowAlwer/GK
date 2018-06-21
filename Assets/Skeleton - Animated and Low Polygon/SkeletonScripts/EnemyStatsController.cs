@@ -13,9 +13,6 @@ public class EnemyStatsController : MonoBehaviour {
      */
     public int health;
 
-    // Use this for initialization
-    void Start () {
-    }
 	
 	/**
      * Checks if skeleton has died

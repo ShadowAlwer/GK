@@ -39,8 +39,7 @@ public class PlayerStats : MonoBehaviour {
      */
     public GameObject goldText;
 
-	// Use this for initialization
-	void Start () {}
+	
 
     /**
      * Adds hp after drinking potion

@@ -181,7 +181,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    /*
+    /**
      *Rotate to face the target
      */
     void FaceTarget()
@@ -191,7 +191,7 @@ public class EnemyController : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
     }
 
-    /*
+    /**
      * Draws look radius sphere in Unity
      */
     void OnDrawGizmosSelected()
