@@ -3,20 +3,59 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/**
+ * Class responsible for end cutscene
+ */
 public class EndScript : MonoBehaviour {
 
+    /**
+     * Reference to end camera
+     */
     public GameObject endCamera;
+
+    /**
+     * Refenrence to main camera
+     */
     public GameObject mainCamera;
+
+    /**
+     * Reference to player
+     */
     public GameObject player;
+
+    /**
+     * Reference to first portal
+     */
     public GameObject portal;
+
+    /**
+     * Reference to statistic canvas
+     */
     private GameObject stats;
 
+    /**
+     * Black texture
+     */
     private Texture2D blackTex;
-    private float alpha = 1;
-    private bool fadingIn = false;
-    private bool fadingOut = false;
-    private bool scaling = false;
 
+    /**
+     * Alpha of black texture
+     */
+    private float alpha = 1;
+
+    /**
+     * Fading in flag
+     */
+    private bool fadingIn = false;
+
+    /**
+     * Fading out flag
+     */
+    private bool fadingOut = false;
+
+    /**
+     * Initialize black screen and set player scale. Start Coroutine for first cutscene
+     */
     void Start() {
         stats = GameObject.Find("CanvasScaled");
         blackTex = new Texture2D(1, 1);
@@ -33,6 +72,9 @@ public class EndScript : MonoBehaviour {
         StartCoroutine(TheSequence());
     }
 
+    /**
+     * Coroutine responsible for cutscene
+     */
     IEnumerator TheSequence() {
         yield return new WaitForSeconds(1);
         player.transform.localPosition = new Vector3(35f, 83.8f, 62.2f);
@@ -59,11 +101,17 @@ public class EndScript : MonoBehaviour {
         SceneManager.LoadScene("Menu");
     }
 
+    /**
+     * Sets foreground color
+     */
     void OnGUI() {
         GUI.color = new Color(0, 0, 0, alpha);
         GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), blackTex);
     }
 
+    /**
+     * Changes foreground alpha
+     */
     void Update() {
         if (fadingIn) {
             alpha = Mathf.Max(alpha - Mathf.Clamp01(Time.deltaTime / 2), 0);
@@ -71,12 +119,6 @@ public class EndScript : MonoBehaviour {
 
         if (fadingOut) {
             alpha = Mathf.Min(alpha + Mathf.Clamp01(Time.deltaTime / 2), 1);
-        }
-
-        if (scaling) {
-            if (player.transform.localScale.x <= 1) {
-                player.transform.localScale += new Vector3(Time.deltaTime, Time.deltaTime, Time.deltaTime);
-            }
         }
     }
 }

@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Class responsible for rotating gold coins
+ */
 public class RotatingGold : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+	/**
+     * Rotates gold coin
+     */
+	void Update() {
         transform.Rotate(1, 0, 0);
 	}
 }
